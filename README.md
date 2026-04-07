@@ -123,7 +123,7 @@ UI runs on: **http://localhost:3000**
 - ✅ Sort tasks by due_date (asc/desc)
 - ✅ Input validation with error messages
 - ✅ Proper error handling (400, 404, 500)
-- ✅ SQLite database (no setup needed)
+- ✅ SQLite database
 - ✅ React frontend consuming all APIs
 =======
 # Taskflow
