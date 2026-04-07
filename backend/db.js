@@ -1,10 +1,10 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-const DB_PATH =
-  process.env.NODE_ENV === "production"
-    ? path.join(__dirname, "prod_database.sqlite") // persistent DB for production
-    : path.join(__dirname, "database.sqlite");     // local DB
+const DB_PATH = process.env.DB_PATH || 
+  (process.env.NODE_ENV === "production"
+    ? "/tmp/database.sqlite"  // on Render
+    : path.join(__dirname, "database.sqlite"));
 
 const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
