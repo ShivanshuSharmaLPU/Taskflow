@@ -3,8 +3,10 @@ const path = require('path');
 
 const DB_PATH =
   process.env.NODE_ENV === "production"
-    ? "/tmp/database.sqlite"
-    : path.join(__dirname, "database.sqlite");
+    ? "/tmp/database.sqlite" :
+    path.join(__dirname, "database.sqlite");
+
+console.log("SQLite DB Path:", DB_PATH); // <-- Add this
 
 const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
