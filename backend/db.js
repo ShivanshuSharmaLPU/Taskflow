@@ -3,10 +3,8 @@ const path = require('path');
 
 const DB_PATH =
   process.env.NODE_ENV === "production"
-    ? "/tmp/database.sqlite" :
-    path.join(__dirname, "database.sqlite");
-
-console.log("SQLite DB Path:", DB_PATH); // <-- Add this
+    ? path.join(__dirname, "prod_database.sqlite") // persistent DB for production
+    : path.join(__dirname, "database.sqlite");     // local DB
 
 const db = new sqlite3.Database(DB_PATH, (err) => {
   if (err) {
@@ -19,6 +17,7 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
 
 function initDB() {
   db.serialize(() => {
+    // Projects table
     db.run(`
       CREATE TABLE IF NOT EXISTS projects (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,6 +27,7 @@ function initDB() {
       )
     `);
 
+    // Tasks table
     db.run(`
       CREATE TABLE IF NOT EXISTS tasks (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,6 +41,8 @@ function initDB() {
         FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
       )
     `);
+
+   
   });
 }
 

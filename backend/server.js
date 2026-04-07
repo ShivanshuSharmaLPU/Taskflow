@@ -7,6 +7,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Routes
 const projectRoutes = require('./routes/projects');
 const taskRoutes = require('./routes/tasks');
 
@@ -18,12 +19,10 @@ app.get('/', (req, res) => {
   res.json({ message: 'Project Management API is running!' });
 });
 
-// 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-// Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ error: 'Internal server error' });
@@ -31,5 +30,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
