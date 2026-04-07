@@ -7,11 +7,11 @@ A full-stack project management system built with **Node.js + Express** (backend
 
 ## 📸 Screenshots
 
+### Project View
+![Project View](screenshots/projects-view.png)
+
 ### Projects List
 ![Projects List](screenshots/projects-list.png)
-
-### Create Project
-![Create Project](screenshots/projects-view.png)
 
 ### Kanban Task Board
 ![Kanban Task Board](screenshots/kanban-board.png)
