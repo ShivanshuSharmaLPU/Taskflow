@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000'
 }));
 app.use(express.json());
 
@@ -12,7 +12,6 @@ const taskRoutes = require('./routes/tasks');
 
 app.use('/projects', projectRoutes);
 app.use('/projects/:project_id/tasks', taskRoutes);
-// Also allow PUT /tasks/:id and DELETE /tasks/:id at root level
 app.use('/tasks', taskRoutes);
 
 app.get('/', (req, res) => {
